@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos básicos */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa; /* color de fondo modificado */
+    margin: 0;
+    padding: 20px;
+}
+
+.home-container {
+    width: 80%;
+    margin: auto;
+    background-color: #ffffff; /* color de fondo modificado */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h3 {
+    color: #004d40; /* color de texto modificado */
+    text-align: center;
+}
+
+/* Estilos del formulario */
+.container-form {
+    height: 500px;
+    background-color: #b2dfdb; /* color de fondo modificado */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.separate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 280px;
+    gap: 15%;
+    /* border: 2px solid black; */
+}
+
+.container-file {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #00838f; /* color de fondo modificado */
+    color: white;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-file-upload input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-area svg {
+    fill: white;
+    width: 24px;
+    height: 24px;
+}
+
+.text-area {
+    width: 100%;
+    color: white;
+    background-color: black;
+    height: 150px;
+    margin-bottom: 20px;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #004d40; /* color de borde modificado */
+}
+
+.button-analys-lex {
+    background-color: black; /* color de fondo modificado */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.button-analys-lex:hover {
+    background-color: #004d40; /* color de fondo modificado */
+}
+
+.button-analys-sintact {
+    background-color: black; /* color de fondo modificado */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.button-analys-sintact:hover {
+    background-color: #002f6c; /* color de fondo modificado */
+}
+
+.button-analys-semantic {
+    background-color: black; /* color de fondo modificado */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.button-analys-semantic:hover {
+    background-color: #e65100; /* color de fondo modificado */
+}
+
+/* Estilos de la tabla y resultados */
+.container-result {
+    margin-top: 20px;
+}
+
+.container-code p,
+.container-table table {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffffff; /* color de fondo modificado */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.container-table th,
+.container-table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #004d40; /* color de fondo modificado */
+    color: white;
+}
+
+tr:hover {
+    background-color: #b2dfdb; /* color de fondo modificado */
+}

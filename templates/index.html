@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Léxico, Sintáctico y Semantico</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="home-container">
+        <div class="container-elements-analys">
+            <div class="container-form">
+                <form id="form" method="POST" enctype="multipart/form-data" action="/">
+                    <div>
+                        {% if content %}
+                            <textarea class="text-area" name="code" placeholder="Escribe tu código aquí...">{{ content }}</textarea>
+                        {% else %}
+                            <textarea class="text-area" name="code" placeholder="Escribe tu código aquí..."></textarea>
+                        {% endif %}
+                    </div>
+                    <div class="separate">
+
+                        <div>
+                            <input type="submit" id="btn13" name="analysis_type" value="Análisis Léxico" class="button-analys-lex"></input>
+                        </div>
+                        <div>
+                            <input type="submit" id="btn23" name="analysis_type" value="Análisis Sintáctico" class="button-analys-sintact"></input>
+                        </div>
+                        <div>
+                            <input type="submit" id="btn33" name="analysis_type" value="Análisis semantico" class="button-analys-semantic"></input>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Tabla de resultados -->
+        <div class="container-result">
+            {% if tokens %}
+                <div class="container-table">
+                    <table>
+                        <tr>
+                            <th>Token</th>
+                            <th>Reservada</th>
+                            <th>Identificador</th>
+                            <th>Numero</th>
+                            <th>Simbolo</th>
+                            <th>Parentesis Izquierdo</th>
+                            <th>Parentesis Derecho</th>
+                            <th>Llave Izquierda</th>
+                            <th>Llave Derecha</th>
+                        </tr>
+                        {% for token, reservada, identificador, numero, simbolo, p_izq, p_der, ll_izq, ll_der in tokens %}
+                            <tr>
+                                <td>{{ token }}</td>
+                                <td>{{ reservada }}</td>
+                                <td>{{ identificador }}</td>
+                                <td>{{ numero }}</td>
+                                <td>{{ simbolo }}</td>
+                                <td>{{ p_izq }}</td>
+                                <td>{{ p_der }}</td>
+                                <td>{{ ll_izq }}</td>
+                                <td>{{ ll_der }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="counter">
+                    <p>Paréntesis de apertura: {{ abierto_count }}</p>
+                    <p>Paréntesis de cierre: {{ cerrado_count }}</p>
+                    <p>Llaves abiertas: {{ ll_abierta_count }}</p>
+                    <p>Llaves cerradas: {{ ll_cerrada_count }}</p>
+                    <p>Errores: {{ error_count }}</p>
+                </div>
+            {% elif syntax_result %}
+                <div class="container-table">
+                    <table>
+                        <tr>
+                            <th>Resultado</th>
+                            <th>Mensaje</th>
+                            <th>Símbolo</th>
+                            <th>Línea</th>
+                        </tr>
+                        {% for resultado, mensaje, simbolo, linea in syntax_result %}
+                            <tr>
+                                <td>{{ resultado }}</td>
+                                <td>{{ mensaje }}</td>
+                                <td>{{ simbolo }}</td>
+                                <td>{{ linea }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <p>No se han encontrado tokens.</p>
+            {% endif %}
+        </div>
+    </div>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Captura del evento clic en el botón de análisis léxico
+            document.getElementById("btn1").addEventListener("click", function(event) {
+                event.preventDefault(); // Evita la recarga de la página
+    
+                // Aquí puedes realizar una acción específica, como enviar datos al servidor usando AJAX
+                enviarFormulario("Análisis Léxico");
+            });
+    
+            document.getElementById("btn2").addEventListener("click", function(event) {
+                event.preventDefault(); // Evita la recarga de la página
+    
+                // Aquí puedes realizar una acción específica, como enviar datos al servidor usando AJAX
+                enviarFormulario("Análisis Sintáctico");
+            });
+    
+            document.getElementById("btn3").addEventListener("click", function(event) {
+                event.preventDefault(); // Evita la recarga de la página
+    
+                // Aquí puedes realizar una acción específica, como enviar datos al servidor usando AJAX
+                enviarFormulario("Análisis Semántico");
+            });
+        });
+    
+        function enviarFormulario(tipoAnalisis) {
+            var form = document.getElementById("form");
+            var formData = new FormData(form); // Aquí deberías agregar los datos del formulario si es necesario
+            formData.append("analysis_type", tipoAnalisis);
+    
+            fetch("/", {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Error en la solicitud.');
+            }).then(data => {
+                // Aquí puedes manejar la respuesta del servidor si es necesario
+                console.log(data);
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script> -->
+</body>
+</html>

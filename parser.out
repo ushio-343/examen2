@@ -1,0 +1,3039 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CLASS
+    COMILLAS
+    DOUBLE
+    ELSE
+    PRIVATE
+    PROTECTED
+    PUBLIC
+    STATIC
+    VOID
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     program -> go_program
+Rule 3     go_program -> package_statement import_statement function_list
+Rule 4     package_statement -> PACKAGE IDENTIFICADOR
+Rule 5     import_statement -> IMPORT CADENA
+Rule 6     function_list -> function
+Rule 7     function_list -> function function_list
+Rule 8     function -> FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA
+Rule 9     print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO
+Rule 10    variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+Rule 11    variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA
+Rule 12    float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA
+Rule 13    string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA
+Rule 14    if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+Rule 15    while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+Rule 16    print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+Rule 17    pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+Rule 18    condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO
+Rule 19    condition -> IDENTIFICADOR IGUAL IGUAL NUMERO
+Rule 20    library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR
+Rule 21    main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+Rule 22    line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+Rule 23    for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+Rule 24    assignment_statement -> IDENTIFICADOR IGUAL NUMERO
+Rule 25    assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+Rule 26    condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO
+Rule 27    condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO
+Rule 28    condition_statement -> IDENTIFICADOR MAYOR NUMERO
+Rule 29    condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO
+Rule 30    increment_statement -> IDENTIFICADOR MAS MAS
+Rule 31    increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO
+Rule 32    arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+Rule 33    arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+Rule 34    arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+Rule 35    arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+Rule 36    arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+Rule 37    arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+Rule 38    statement -> <empty>
+Rule 39    statement -> pakatreice_statement
+Rule 40    statement -> print_go_statement
+Rule 41    statement -> print_statement
+Rule 42    statement -> variable_declaration
+Rule 43    statement -> variable_declaration_simple
+Rule 44    statement -> float_declaration
+Rule 45    statement -> string_declaration
+Rule 46    statement -> if_statement
+Rule 47    statement -> while_statement
+Rule 48    statement -> library_statement
+Rule 49    statement -> main_statement
+Rule 50    statement -> line_declaration_statement
+Rule 51    statement -> for_statement
+Rule 52    statement -> assignment_statement
+Rule 53    statement -> condition_statement
+Rule 54    statement -> increment_statement
+Rule 55    statement -> arithmetic_operation
+Rule 56    statement -> condition
+Rule 57    statement_list -> statement
+Rule 58    statement_list -> statement_list statement
+
+Terminals, with rules where they appear
+
+ABIERTO              : 8 9 14 15 15 15 15 15 16 17 21 23
+AND                  : 14
+CADENA               : 5 9 13 16
+CERRADO              : 8 9 14 15 15 15 15 15 16 17 21 23
+CLASS                : 
+COMA                 : 15 22 22
+COMILLAS             : 
+DO                   : 17
+DOUBLE               : 
+ELSE                 : 
+ENDDO                : 17
+ENDWHILE             : 17
+FLOAT                : 12
+FMT                  : 9
+FOR                  : 15 23
+FUNC                 : 8
+GATO                 : 20
+H                    : 20
+IDENTIFICADOR        : 4 10 11 12 13 15 15 15 16 18 19 22 22 22 24 25 25 25 26 27 28 29 30 31 32 32 33 33 34 34 35 35 36 36 36 37
+IF                   : 14
+IGUAL                : 10 12 13 15 18 18 19 19 22 24 25 27 27 32 33 34 35 36 37
+IMPORT               : 5
+IN                   : 15
+INCLUDE              : 20
+INPUT                : 15
+INT                  : 10 11 18 21 22
+LLAVE_ABIERTA        : 8 14 15 15 15 21 23
+LLAVE_CERRADA        : 8 14 15 15 15 21 23
+MAIN                 : 21
+MAS                  : 16 25 30 30 33 35 36 37
+MAS_IGUAL            : 31
+MAYOR                : 14 15 15 20 28
+MAYOR_IGUAL          : 29
+MENOR                : 20
+MENOR_IGUAL          : 26
+NUMERO               : 10 12 12 14 14 15 15 15 15 15 15 15 18 19 21 22 24 26 27 28 29 31 32 33 34 35 37 37
+OUT                  : 16
+PACKAGE              : 4
+POR                  : 15 32 34
+PRINTLN              : 9 16
+PRIVATE              : 
+PROTECTED            : 
+PUBLIC               : 
+PUNTO                : 9 12 16 16 20
+PUNTO_Y_COMA         : 10 11 12 13 15 15 16 17 17 21 22 23 23 23 23
+RANGE                : 15
+RETURN               : 21
+STATIC               : 
+STDIO                : 20
+STRING               : 13
+SYSTEM               : 16
+VOID                 : 
+WHILE                : 15 15 17
+error                : 
+pepe                 : 8
+
+Nonterminals, with rules where they appear
+
+arithmetic_operation : 17 17 23 23 55
+assignment_statement : 23 52
+condition            : 17 56
+condition_statement  : 14 23 53
+float_declaration    : 44
+for_statement        : 21 51
+function             : 6 7
+function_list        : 3 7
+go_program           : 2
+if_statement         : 46
+import_statement     : 3
+increment_statement  : 15 23 54
+library_statement    : 48
+line_declaration_statement : 21 50
+main_statement       : 49
+package_statement    : 3
+pakatreice_statement : 39
+print_go_statement   : 40
+print_statement      : 41
+program              : 0
+statement            : 57 58
+statement_list       : 1 8 58
+string_declaration   : 45
+variable_declaration : 42
+variable_declaration_simple : 43
+while_statement      : 14 47
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) program -> . go_program
+    (57) statement_list -> . statement
+    (58) statement_list -> . statement_list statement
+    (3) go_program -> . package_statement import_statement function_list
+    (38) statement -> .
+    (39) statement -> . pakatreice_statement
+    (40) statement -> . print_go_statement
+    (41) statement -> . print_statement
+    (42) statement -> . variable_declaration
+    (43) statement -> . variable_declaration_simple
+    (44) statement -> . float_declaration
+    (45) statement -> . string_declaration
+    (46) statement -> . if_statement
+    (47) statement -> . while_statement
+    (48) statement -> . library_statement
+    (49) statement -> . main_statement
+    (50) statement -> . line_declaration_statement
+    (51) statement -> . for_statement
+    (52) statement -> . assignment_statement
+    (53) statement -> . condition_statement
+    (54) statement -> . increment_statement
+    (55) statement -> . arithmetic_operation
+    (56) statement -> . condition
+    (4) package_statement -> . PACKAGE IDENTIFICADOR
+    (17) pakatreice_statement -> . DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+    (9) print_go_statement -> . FMT PUNTO PRINTLN ABIERTO CADENA CERRADO
+    (16) print_statement -> . SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+    (10) variable_declaration -> . INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (11) variable_declaration_simple -> . INT IDENTIFICADOR PUNTO_Y_COMA
+    (12) float_declaration -> . FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA
+    (13) string_declaration -> . STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA
+    (14) if_statement -> . IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+    (15) while_statement -> . WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+    (20) library_statement -> . GATO INCLUDE MENOR STDIO PUNTO H MAYOR
+    (21) main_statement -> . INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+    (22) line_declaration_statement -> . INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (23) for_statement -> . FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (24) assignment_statement -> . IDENTIFICADOR IGUAL NUMERO
+    (25) assignment_statement -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (26) condition_statement -> . IDENTIFICADOR MENOR_IGUAL NUMERO
+    (27) condition_statement -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+    (28) condition_statement -> . IDENTIFICADOR MAYOR NUMERO
+    (29) condition_statement -> . IDENTIFICADOR MAYOR_IGUAL NUMERO
+    (30) increment_statement -> . IDENTIFICADOR MAS MAS
+    (31) increment_statement -> . IDENTIFICADOR MAS_IGUAL NUMERO
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+    (18) condition -> . INT IDENTIFICADOR IGUAL IGUAL NUMERO
+    (19) condition -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for FMT resolved as shift
+  ! shift/reduce conflict for SYSTEM resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for GATO resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for IDENTIFICADOR resolved as shift
+    $end            reduce using rule 38 (statement -> .)
+    PACKAGE         shift and go to state 24
+    DO              shift and go to state 26
+    FMT             shift and go to state 28
+    SYSTEM          shift and go to state 29
+    INT             shift and go to state 30
+    FLOAT           shift and go to state 31
+    STRING          shift and go to state 32
+    IF              shift and go to state 33
+    WHILE           shift and go to state 27
+    GATO            shift and go to state 35
+    FOR             shift and go to state 34
+    IDENTIFICADOR   shift and go to state 25
+
+  ! DO              [ reduce using rule 38 (statement -> .) ]
+  ! FMT             [ reduce using rule 38 (statement -> .) ]
+  ! SYSTEM          [ reduce using rule 38 (statement -> .) ]
+  ! INT             [ reduce using rule 38 (statement -> .) ]
+  ! FLOAT           [ reduce using rule 38 (statement -> .) ]
+  ! STRING          [ reduce using rule 38 (statement -> .) ]
+  ! IF              [ reduce using rule 38 (statement -> .) ]
+  ! WHILE           [ reduce using rule 38 (statement -> .) ]
+  ! GATO            [ reduce using rule 38 (statement -> .) ]
+  ! FOR             [ reduce using rule 38 (statement -> .) ]
+  ! IDENTIFICADOR   [ reduce using rule 38 (statement -> .) ]
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    go_program                     shift and go to state 3
+    statement                      shift and go to state 4
+    package_statement              shift and go to state 5
+    pakatreice_statement           shift and go to state 6
+    print_go_statement             shift and go to state 7
+    print_statement                shift and go to state 8
+    variable_declaration           shift and go to state 9
+    variable_declaration_simple    shift and go to state 10
+    float_declaration              shift and go to state 11
+    string_declaration             shift and go to state 12
+    if_statement                   shift and go to state 13
+    while_statement                shift and go to state 14
+    library_statement              shift and go to state 15
+    main_statement                 shift and go to state 16
+    line_declaration_statement     shift and go to state 17
+    for_statement                  shift and go to state 18
+    assignment_statement           shift and go to state 19
+    condition_statement            shift and go to state 20
+    increment_statement            shift and go to state 21
+    arithmetic_operation           shift and go to state 22
+    condition                      shift and go to state 23
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (58) statement_list -> statement_list . statement
+    (38) statement -> .
+    (39) statement -> . pakatreice_statement
+    (40) statement -> . print_go_statement
+    (41) statement -> . print_statement
+    (42) statement -> . variable_declaration
+    (43) statement -> . variable_declaration_simple
+    (44) statement -> . float_declaration
+    (45) statement -> . string_declaration
+    (46) statement -> . if_statement
+    (47) statement -> . while_statement
+    (48) statement -> . library_statement
+    (49) statement -> . main_statement
+    (50) statement -> . line_declaration_statement
+    (51) statement -> . for_statement
+    (52) statement -> . assignment_statement
+    (53) statement -> . condition_statement
+    (54) statement -> . increment_statement
+    (55) statement -> . arithmetic_operation
+    (56) statement -> . condition
+    (17) pakatreice_statement -> . DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+    (9) print_go_statement -> . FMT PUNTO PRINTLN ABIERTO CADENA CERRADO
+    (16) print_statement -> . SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+    (10) variable_declaration -> . INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (11) variable_declaration_simple -> . INT IDENTIFICADOR PUNTO_Y_COMA
+    (12) float_declaration -> . FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA
+    (13) string_declaration -> . STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA
+    (14) if_statement -> . IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+    (15) while_statement -> . WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+    (20) library_statement -> . GATO INCLUDE MENOR STDIO PUNTO H MAYOR
+    (21) main_statement -> . INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+    (22) line_declaration_statement -> . INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (23) for_statement -> . FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (24) assignment_statement -> . IDENTIFICADOR IGUAL NUMERO
+    (25) assignment_statement -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (26) condition_statement -> . IDENTIFICADOR MENOR_IGUAL NUMERO
+    (27) condition_statement -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+    (28) condition_statement -> . IDENTIFICADOR MAYOR NUMERO
+    (29) condition_statement -> . IDENTIFICADOR MAYOR_IGUAL NUMERO
+    (30) increment_statement -> . IDENTIFICADOR MAS MAS
+    (31) increment_statement -> . IDENTIFICADOR MAS_IGUAL NUMERO
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+    (18) condition -> . INT IDENTIFICADOR IGUAL IGUAL NUMERO
+    (19) condition -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+
+  ! reduce/reduce conflict for $end resolved using rule 1 (program -> statement_list .)
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for FMT resolved as shift
+  ! shift/reduce conflict for SYSTEM resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for GATO resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for IDENTIFICADOR resolved as shift
+    $end            reduce using rule 1 (program -> statement_list .)
+    DO              shift and go to state 26
+    FMT             shift and go to state 28
+    SYSTEM          shift and go to state 29
+    INT             shift and go to state 30
+    FLOAT           shift and go to state 31
+    STRING          shift and go to state 32
+    IF              shift and go to state 33
+    WHILE           shift and go to state 27
+    GATO            shift and go to state 35
+    FOR             shift and go to state 34
+    IDENTIFICADOR   shift and go to state 25
+
+  ! DO              [ reduce using rule 38 (statement -> .) ]
+  ! FMT             [ reduce using rule 38 (statement -> .) ]
+  ! SYSTEM          [ reduce using rule 38 (statement -> .) ]
+  ! INT             [ reduce using rule 38 (statement -> .) ]
+  ! FLOAT           [ reduce using rule 38 (statement -> .) ]
+  ! STRING          [ reduce using rule 38 (statement -> .) ]
+  ! IF              [ reduce using rule 38 (statement -> .) ]
+  ! WHILE           [ reduce using rule 38 (statement -> .) ]
+  ! GATO            [ reduce using rule 38 (statement -> .) ]
+  ! FOR             [ reduce using rule 38 (statement -> .) ]
+  ! IDENTIFICADOR   [ reduce using rule 38 (statement -> .) ]
+  ! $end            [ reduce using rule 38 (statement -> .) ]
+
+    statement                      shift and go to state 36
+    pakatreice_statement           shift and go to state 6
+    print_go_statement             shift and go to state 7
+    print_statement                shift and go to state 8
+    variable_declaration           shift and go to state 9
+    variable_declaration_simple    shift and go to state 10
+    float_declaration              shift and go to state 11
+    string_declaration             shift and go to state 12
+    if_statement                   shift and go to state 13
+    while_statement                shift and go to state 14
+    library_statement              shift and go to state 15
+    main_statement                 shift and go to state 16
+    line_declaration_statement     shift and go to state 17
+    for_statement                  shift and go to state 18
+    assignment_statement           shift and go to state 19
+    condition_statement            shift and go to state 20
+    increment_statement            shift and go to state 21
+    arithmetic_operation           shift and go to state 22
+    condition                      shift and go to state 23
+
+state 3
+
+    (2) program -> go_program .
+
+    $end            reduce using rule 2 (program -> go_program .)
+
+
+state 4
+
+    (57) statement_list -> statement .
+
+    DO              reduce using rule 57 (statement_list -> statement .)
+    FMT             reduce using rule 57 (statement_list -> statement .)
+    SYSTEM          reduce using rule 57 (statement_list -> statement .)
+    INT             reduce using rule 57 (statement_list -> statement .)
+    FLOAT           reduce using rule 57 (statement_list -> statement .)
+    STRING          reduce using rule 57 (statement_list -> statement .)
+    IF              reduce using rule 57 (statement_list -> statement .)
+    WHILE           reduce using rule 57 (statement_list -> statement .)
+    GATO            reduce using rule 57 (statement_list -> statement .)
+    FOR             reduce using rule 57 (statement_list -> statement .)
+    IDENTIFICADOR   reduce using rule 57 (statement_list -> statement .)
+    $end            reduce using rule 57 (statement_list -> statement .)
+    LLAVE_CERRADA   reduce using rule 57 (statement_list -> statement .)
+
+
+state 5
+
+    (3) go_program -> package_statement . import_statement function_list
+    (5) import_statement -> . IMPORT CADENA
+
+    IMPORT          shift and go to state 38
+
+    import_statement               shift and go to state 37
+
+state 6
+
+    (39) statement -> pakatreice_statement .
+
+    DO              reduce using rule 39 (statement -> pakatreice_statement .)
+    FMT             reduce using rule 39 (statement -> pakatreice_statement .)
+    SYSTEM          reduce using rule 39 (statement -> pakatreice_statement .)
+    INT             reduce using rule 39 (statement -> pakatreice_statement .)
+    FLOAT           reduce using rule 39 (statement -> pakatreice_statement .)
+    STRING          reduce using rule 39 (statement -> pakatreice_statement .)
+    IF              reduce using rule 39 (statement -> pakatreice_statement .)
+    WHILE           reduce using rule 39 (statement -> pakatreice_statement .)
+    GATO            reduce using rule 39 (statement -> pakatreice_statement .)
+    FOR             reduce using rule 39 (statement -> pakatreice_statement .)
+    IDENTIFICADOR   reduce using rule 39 (statement -> pakatreice_statement .)
+    $end            reduce using rule 39 (statement -> pakatreice_statement .)
+    LLAVE_CERRADA   reduce using rule 39 (statement -> pakatreice_statement .)
+
+
+state 7
+
+    (40) statement -> print_go_statement .
+
+    DO              reduce using rule 40 (statement -> print_go_statement .)
+    FMT             reduce using rule 40 (statement -> print_go_statement .)
+    SYSTEM          reduce using rule 40 (statement -> print_go_statement .)
+    INT             reduce using rule 40 (statement -> print_go_statement .)
+    FLOAT           reduce using rule 40 (statement -> print_go_statement .)
+    STRING          reduce using rule 40 (statement -> print_go_statement .)
+    IF              reduce using rule 40 (statement -> print_go_statement .)
+    WHILE           reduce using rule 40 (statement -> print_go_statement .)
+    GATO            reduce using rule 40 (statement -> print_go_statement .)
+    FOR             reduce using rule 40 (statement -> print_go_statement .)
+    IDENTIFICADOR   reduce using rule 40 (statement -> print_go_statement .)
+    $end            reduce using rule 40 (statement -> print_go_statement .)
+    LLAVE_CERRADA   reduce using rule 40 (statement -> print_go_statement .)
+
+
+state 8
+
+    (41) statement -> print_statement .
+
+    DO              reduce using rule 41 (statement -> print_statement .)
+    FMT             reduce using rule 41 (statement -> print_statement .)
+    SYSTEM          reduce using rule 41 (statement -> print_statement .)
+    INT             reduce using rule 41 (statement -> print_statement .)
+    FLOAT           reduce using rule 41 (statement -> print_statement .)
+    STRING          reduce using rule 41 (statement -> print_statement .)
+    IF              reduce using rule 41 (statement -> print_statement .)
+    WHILE           reduce using rule 41 (statement -> print_statement .)
+    GATO            reduce using rule 41 (statement -> print_statement .)
+    FOR             reduce using rule 41 (statement -> print_statement .)
+    IDENTIFICADOR   reduce using rule 41 (statement -> print_statement .)
+    $end            reduce using rule 41 (statement -> print_statement .)
+    LLAVE_CERRADA   reduce using rule 41 (statement -> print_statement .)
+
+
+state 9
+
+    (42) statement -> variable_declaration .
+
+    DO              reduce using rule 42 (statement -> variable_declaration .)
+    FMT             reduce using rule 42 (statement -> variable_declaration .)
+    SYSTEM          reduce using rule 42 (statement -> variable_declaration .)
+    INT             reduce using rule 42 (statement -> variable_declaration .)
+    FLOAT           reduce using rule 42 (statement -> variable_declaration .)
+    STRING          reduce using rule 42 (statement -> variable_declaration .)
+    IF              reduce using rule 42 (statement -> variable_declaration .)
+    WHILE           reduce using rule 42 (statement -> variable_declaration .)
+    GATO            reduce using rule 42 (statement -> variable_declaration .)
+    FOR             reduce using rule 42 (statement -> variable_declaration .)
+    IDENTIFICADOR   reduce using rule 42 (statement -> variable_declaration .)
+    $end            reduce using rule 42 (statement -> variable_declaration .)
+    LLAVE_CERRADA   reduce using rule 42 (statement -> variable_declaration .)
+
+
+state 10
+
+    (43) statement -> variable_declaration_simple .
+
+    DO              reduce using rule 43 (statement -> variable_declaration_simple .)
+    FMT             reduce using rule 43 (statement -> variable_declaration_simple .)
+    SYSTEM          reduce using rule 43 (statement -> variable_declaration_simple .)
+    INT             reduce using rule 43 (statement -> variable_declaration_simple .)
+    FLOAT           reduce using rule 43 (statement -> variable_declaration_simple .)
+    STRING          reduce using rule 43 (statement -> variable_declaration_simple .)
+    IF              reduce using rule 43 (statement -> variable_declaration_simple .)
+    WHILE           reduce using rule 43 (statement -> variable_declaration_simple .)
+    GATO            reduce using rule 43 (statement -> variable_declaration_simple .)
+    FOR             reduce using rule 43 (statement -> variable_declaration_simple .)
+    IDENTIFICADOR   reduce using rule 43 (statement -> variable_declaration_simple .)
+    $end            reduce using rule 43 (statement -> variable_declaration_simple .)
+    LLAVE_CERRADA   reduce using rule 43 (statement -> variable_declaration_simple .)
+
+
+state 11
+
+    (44) statement -> float_declaration .
+
+    DO              reduce using rule 44 (statement -> float_declaration .)
+    FMT             reduce using rule 44 (statement -> float_declaration .)
+    SYSTEM          reduce using rule 44 (statement -> float_declaration .)
+    INT             reduce using rule 44 (statement -> float_declaration .)
+    FLOAT           reduce using rule 44 (statement -> float_declaration .)
+    STRING          reduce using rule 44 (statement -> float_declaration .)
+    IF              reduce using rule 44 (statement -> float_declaration .)
+    WHILE           reduce using rule 44 (statement -> float_declaration .)
+    GATO            reduce using rule 44 (statement -> float_declaration .)
+    FOR             reduce using rule 44 (statement -> float_declaration .)
+    IDENTIFICADOR   reduce using rule 44 (statement -> float_declaration .)
+    $end            reduce using rule 44 (statement -> float_declaration .)
+    LLAVE_CERRADA   reduce using rule 44 (statement -> float_declaration .)
+
+
+state 12
+
+    (45) statement -> string_declaration .
+
+    DO              reduce using rule 45 (statement -> string_declaration .)
+    FMT             reduce using rule 45 (statement -> string_declaration .)
+    SYSTEM          reduce using rule 45 (statement -> string_declaration .)
+    INT             reduce using rule 45 (statement -> string_declaration .)
+    FLOAT           reduce using rule 45 (statement -> string_declaration .)
+    STRING          reduce using rule 45 (statement -> string_declaration .)
+    IF              reduce using rule 45 (statement -> string_declaration .)
+    WHILE           reduce using rule 45 (statement -> string_declaration .)
+    GATO            reduce using rule 45 (statement -> string_declaration .)
+    FOR             reduce using rule 45 (statement -> string_declaration .)
+    IDENTIFICADOR   reduce using rule 45 (statement -> string_declaration .)
+    $end            reduce using rule 45 (statement -> string_declaration .)
+    LLAVE_CERRADA   reduce using rule 45 (statement -> string_declaration .)
+
+
+state 13
+
+    (46) statement -> if_statement .
+
+    DO              reduce using rule 46 (statement -> if_statement .)
+    FMT             reduce using rule 46 (statement -> if_statement .)
+    SYSTEM          reduce using rule 46 (statement -> if_statement .)
+    INT             reduce using rule 46 (statement -> if_statement .)
+    FLOAT           reduce using rule 46 (statement -> if_statement .)
+    STRING          reduce using rule 46 (statement -> if_statement .)
+    IF              reduce using rule 46 (statement -> if_statement .)
+    WHILE           reduce using rule 46 (statement -> if_statement .)
+    GATO            reduce using rule 46 (statement -> if_statement .)
+    FOR             reduce using rule 46 (statement -> if_statement .)
+    IDENTIFICADOR   reduce using rule 46 (statement -> if_statement .)
+    $end            reduce using rule 46 (statement -> if_statement .)
+    LLAVE_CERRADA   reduce using rule 46 (statement -> if_statement .)
+
+
+state 14
+
+    (47) statement -> while_statement .
+
+    DO              reduce using rule 47 (statement -> while_statement .)
+    FMT             reduce using rule 47 (statement -> while_statement .)
+    SYSTEM          reduce using rule 47 (statement -> while_statement .)
+    INT             reduce using rule 47 (statement -> while_statement .)
+    FLOAT           reduce using rule 47 (statement -> while_statement .)
+    STRING          reduce using rule 47 (statement -> while_statement .)
+    IF              reduce using rule 47 (statement -> while_statement .)
+    WHILE           reduce using rule 47 (statement -> while_statement .)
+    GATO            reduce using rule 47 (statement -> while_statement .)
+    FOR             reduce using rule 47 (statement -> while_statement .)
+    IDENTIFICADOR   reduce using rule 47 (statement -> while_statement .)
+    $end            reduce using rule 47 (statement -> while_statement .)
+    LLAVE_CERRADA   reduce using rule 47 (statement -> while_statement .)
+
+
+state 15
+
+    (48) statement -> library_statement .
+
+    DO              reduce using rule 48 (statement -> library_statement .)
+    FMT             reduce using rule 48 (statement -> library_statement .)
+    SYSTEM          reduce using rule 48 (statement -> library_statement .)
+    INT             reduce using rule 48 (statement -> library_statement .)
+    FLOAT           reduce using rule 48 (statement -> library_statement .)
+    STRING          reduce using rule 48 (statement -> library_statement .)
+    IF              reduce using rule 48 (statement -> library_statement .)
+    WHILE           reduce using rule 48 (statement -> library_statement .)
+    GATO            reduce using rule 48 (statement -> library_statement .)
+    FOR             reduce using rule 48 (statement -> library_statement .)
+    IDENTIFICADOR   reduce using rule 48 (statement -> library_statement .)
+    $end            reduce using rule 48 (statement -> library_statement .)
+    LLAVE_CERRADA   reduce using rule 48 (statement -> library_statement .)
+
+
+state 16
+
+    (49) statement -> main_statement .
+
+    DO              reduce using rule 49 (statement -> main_statement .)
+    FMT             reduce using rule 49 (statement -> main_statement .)
+    SYSTEM          reduce using rule 49 (statement -> main_statement .)
+    INT             reduce using rule 49 (statement -> main_statement .)
+    FLOAT           reduce using rule 49 (statement -> main_statement .)
+    STRING          reduce using rule 49 (statement -> main_statement .)
+    IF              reduce using rule 49 (statement -> main_statement .)
+    WHILE           reduce using rule 49 (statement -> main_statement .)
+    GATO            reduce using rule 49 (statement -> main_statement .)
+    FOR             reduce using rule 49 (statement -> main_statement .)
+    IDENTIFICADOR   reduce using rule 49 (statement -> main_statement .)
+    $end            reduce using rule 49 (statement -> main_statement .)
+    LLAVE_CERRADA   reduce using rule 49 (statement -> main_statement .)
+
+
+state 17
+
+    (50) statement -> line_declaration_statement .
+
+    DO              reduce using rule 50 (statement -> line_declaration_statement .)
+    FMT             reduce using rule 50 (statement -> line_declaration_statement .)
+    SYSTEM          reduce using rule 50 (statement -> line_declaration_statement .)
+    INT             reduce using rule 50 (statement -> line_declaration_statement .)
+    FLOAT           reduce using rule 50 (statement -> line_declaration_statement .)
+    STRING          reduce using rule 50 (statement -> line_declaration_statement .)
+    IF              reduce using rule 50 (statement -> line_declaration_statement .)
+    WHILE           reduce using rule 50 (statement -> line_declaration_statement .)
+    GATO            reduce using rule 50 (statement -> line_declaration_statement .)
+    FOR             reduce using rule 50 (statement -> line_declaration_statement .)
+    IDENTIFICADOR   reduce using rule 50 (statement -> line_declaration_statement .)
+    $end            reduce using rule 50 (statement -> line_declaration_statement .)
+    LLAVE_CERRADA   reduce using rule 50 (statement -> line_declaration_statement .)
+
+
+state 18
+
+    (51) statement -> for_statement .
+
+    DO              reduce using rule 51 (statement -> for_statement .)
+    FMT             reduce using rule 51 (statement -> for_statement .)
+    SYSTEM          reduce using rule 51 (statement -> for_statement .)
+    INT             reduce using rule 51 (statement -> for_statement .)
+    FLOAT           reduce using rule 51 (statement -> for_statement .)
+    STRING          reduce using rule 51 (statement -> for_statement .)
+    IF              reduce using rule 51 (statement -> for_statement .)
+    WHILE           reduce using rule 51 (statement -> for_statement .)
+    GATO            reduce using rule 51 (statement -> for_statement .)
+    FOR             reduce using rule 51 (statement -> for_statement .)
+    IDENTIFICADOR   reduce using rule 51 (statement -> for_statement .)
+    $end            reduce using rule 51 (statement -> for_statement .)
+    LLAVE_CERRADA   reduce using rule 51 (statement -> for_statement .)
+
+
+state 19
+
+    (52) statement -> assignment_statement .
+
+    DO              reduce using rule 52 (statement -> assignment_statement .)
+    FMT             reduce using rule 52 (statement -> assignment_statement .)
+    SYSTEM          reduce using rule 52 (statement -> assignment_statement .)
+    INT             reduce using rule 52 (statement -> assignment_statement .)
+    FLOAT           reduce using rule 52 (statement -> assignment_statement .)
+    STRING          reduce using rule 52 (statement -> assignment_statement .)
+    IF              reduce using rule 52 (statement -> assignment_statement .)
+    WHILE           reduce using rule 52 (statement -> assignment_statement .)
+    GATO            reduce using rule 52 (statement -> assignment_statement .)
+    FOR             reduce using rule 52 (statement -> assignment_statement .)
+    IDENTIFICADOR   reduce using rule 52 (statement -> assignment_statement .)
+    $end            reduce using rule 52 (statement -> assignment_statement .)
+    LLAVE_CERRADA   reduce using rule 52 (statement -> assignment_statement .)
+
+
+state 20
+
+    (53) statement -> condition_statement .
+
+    DO              reduce using rule 53 (statement -> condition_statement .)
+    FMT             reduce using rule 53 (statement -> condition_statement .)
+    SYSTEM          reduce using rule 53 (statement -> condition_statement .)
+    INT             reduce using rule 53 (statement -> condition_statement .)
+    FLOAT           reduce using rule 53 (statement -> condition_statement .)
+    STRING          reduce using rule 53 (statement -> condition_statement .)
+    IF              reduce using rule 53 (statement -> condition_statement .)
+    WHILE           reduce using rule 53 (statement -> condition_statement .)
+    GATO            reduce using rule 53 (statement -> condition_statement .)
+    FOR             reduce using rule 53 (statement -> condition_statement .)
+    IDENTIFICADOR   reduce using rule 53 (statement -> condition_statement .)
+    $end            reduce using rule 53 (statement -> condition_statement .)
+    LLAVE_CERRADA   reduce using rule 53 (statement -> condition_statement .)
+
+
+state 21
+
+    (54) statement -> increment_statement .
+
+    DO              reduce using rule 54 (statement -> increment_statement .)
+    FMT             reduce using rule 54 (statement -> increment_statement .)
+    SYSTEM          reduce using rule 54 (statement -> increment_statement .)
+    INT             reduce using rule 54 (statement -> increment_statement .)
+    FLOAT           reduce using rule 54 (statement -> increment_statement .)
+    STRING          reduce using rule 54 (statement -> increment_statement .)
+    IF              reduce using rule 54 (statement -> increment_statement .)
+    WHILE           reduce using rule 54 (statement -> increment_statement .)
+    GATO            reduce using rule 54 (statement -> increment_statement .)
+    FOR             reduce using rule 54 (statement -> increment_statement .)
+    IDENTIFICADOR   reduce using rule 54 (statement -> increment_statement .)
+    $end            reduce using rule 54 (statement -> increment_statement .)
+    LLAVE_CERRADA   reduce using rule 54 (statement -> increment_statement .)
+
+
+state 22
+
+    (55) statement -> arithmetic_operation .
+
+    DO              reduce using rule 55 (statement -> arithmetic_operation .)
+    FMT             reduce using rule 55 (statement -> arithmetic_operation .)
+    SYSTEM          reduce using rule 55 (statement -> arithmetic_operation .)
+    INT             reduce using rule 55 (statement -> arithmetic_operation .)
+    FLOAT           reduce using rule 55 (statement -> arithmetic_operation .)
+    STRING          reduce using rule 55 (statement -> arithmetic_operation .)
+    IF              reduce using rule 55 (statement -> arithmetic_operation .)
+    WHILE           reduce using rule 55 (statement -> arithmetic_operation .)
+    GATO            reduce using rule 55 (statement -> arithmetic_operation .)
+    FOR             reduce using rule 55 (statement -> arithmetic_operation .)
+    IDENTIFICADOR   reduce using rule 55 (statement -> arithmetic_operation .)
+    $end            reduce using rule 55 (statement -> arithmetic_operation .)
+    LLAVE_CERRADA   reduce using rule 55 (statement -> arithmetic_operation .)
+
+
+state 23
+
+    (56) statement -> condition .
+
+    DO              reduce using rule 56 (statement -> condition .)
+    FMT             reduce using rule 56 (statement -> condition .)
+    SYSTEM          reduce using rule 56 (statement -> condition .)
+    INT             reduce using rule 56 (statement -> condition .)
+    FLOAT           reduce using rule 56 (statement -> condition .)
+    STRING          reduce using rule 56 (statement -> condition .)
+    IF              reduce using rule 56 (statement -> condition .)
+    WHILE           reduce using rule 56 (statement -> condition .)
+    GATO            reduce using rule 56 (statement -> condition .)
+    FOR             reduce using rule 56 (statement -> condition .)
+    IDENTIFICADOR   reduce using rule 56 (statement -> condition .)
+    $end            reduce using rule 56 (statement -> condition .)
+    LLAVE_CERRADA   reduce using rule 56 (statement -> condition .)
+
+
+state 24
+
+    (4) package_statement -> PACKAGE . IDENTIFICADOR
+
+    IDENTIFICADOR   shift and go to state 39
+
+
+state 25
+
+    (24) assignment_statement -> IDENTIFICADOR . IGUAL NUMERO
+    (25) assignment_statement -> IDENTIFICADOR . IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (26) condition_statement -> IDENTIFICADOR . MENOR_IGUAL NUMERO
+    (27) condition_statement -> IDENTIFICADOR . IGUAL IGUAL NUMERO
+    (28) condition_statement -> IDENTIFICADOR . MAYOR NUMERO
+    (29) condition_statement -> IDENTIFICADOR . MAYOR_IGUAL NUMERO
+    (30) increment_statement -> IDENTIFICADOR . MAS MAS
+    (31) increment_statement -> IDENTIFICADOR . MAS_IGUAL NUMERO
+    (32) arithmetic_operation -> IDENTIFICADOR . IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> IDENTIFICADOR . IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> IDENTIFICADOR . IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> IDENTIFICADOR . IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR . IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> IDENTIFICADOR . IGUAL NUMERO MAS NUMERO
+    (19) condition -> IDENTIFICADOR . IGUAL IGUAL NUMERO
+
+    IGUAL           shift and go to state 40
+    MENOR_IGUAL     shift and go to state 42
+    MAYOR           shift and go to state 43
+    MAYOR_IGUAL     shift and go to state 44
+    MAS             shift and go to state 41
+    MAS_IGUAL       shift and go to state 45
+
+
+state 26
+
+    (17) pakatreice_statement -> DO . arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+
+    IDENTIFICADOR   shift and go to state 47
+
+    arithmetic_operation           shift and go to state 46
+
+state 27
+
+    (15) while_statement -> WHILE . ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 48
+
+
+state 28
+
+    (9) print_go_statement -> FMT . PUNTO PRINTLN ABIERTO CADENA CERRADO
+
+    PUNTO           shift and go to state 49
+
+
+state 29
+
+    (16) print_statement -> SYSTEM . PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    PUNTO           shift and go to state 50
+
+
+state 30
+
+    (10) variable_declaration -> INT . IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (11) variable_declaration_simple -> INT . IDENTIFICADOR PUNTO_Y_COMA
+    (21) main_statement -> INT . MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+    (22) line_declaration_statement -> INT . IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (18) condition -> INT . IDENTIFICADOR IGUAL IGUAL NUMERO
+
+    IDENTIFICADOR   shift and go to state 51
+    MAIN            shift and go to state 52
+
+
+state 31
+
+    (12) float_declaration -> FLOAT . IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA
+
+    IDENTIFICADOR   shift and go to state 53
+
+
+state 32
+
+    (13) string_declaration -> STRING . IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA
+
+    IDENTIFICADOR   shift and go to state 54
+
+
+state 33
+
+    (14) if_statement -> IF . ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 55
+
+
+state 34
+
+    (23) for_statement -> FOR . ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 56
+
+
+state 35
+
+    (20) library_statement -> GATO . INCLUDE MENOR STDIO PUNTO H MAYOR
+
+    INCLUDE         shift and go to state 57
+
+
+state 36
+
+    (58) statement_list -> statement_list statement .
+
+    DO              reduce using rule 58 (statement_list -> statement_list statement .)
+    FMT             reduce using rule 58 (statement_list -> statement_list statement .)
+    SYSTEM          reduce using rule 58 (statement_list -> statement_list statement .)
+    INT             reduce using rule 58 (statement_list -> statement_list statement .)
+    FLOAT           reduce using rule 58 (statement_list -> statement_list statement .)
+    STRING          reduce using rule 58 (statement_list -> statement_list statement .)
+    IF              reduce using rule 58 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 58 (statement_list -> statement_list statement .)
+    GATO            reduce using rule 58 (statement_list -> statement_list statement .)
+    FOR             reduce using rule 58 (statement_list -> statement_list statement .)
+    IDENTIFICADOR   reduce using rule 58 (statement_list -> statement_list statement .)
+    $end            reduce using rule 58 (statement_list -> statement_list statement .)
+    LLAVE_CERRADA   reduce using rule 58 (statement_list -> statement_list statement .)
+
+
+state 37
+
+    (3) go_program -> package_statement import_statement . function_list
+    (6) function_list -> . function
+    (7) function_list -> . function function_list
+    (8) function -> . FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA
+
+    FUNC            shift and go to state 60
+
+    function_list                  shift and go to state 58
+    function                       shift and go to state 59
+
+state 38
+
+    (5) import_statement -> IMPORT . CADENA
+
+    CADENA          shift and go to state 61
+
+
+state 39
+
+    (4) package_statement -> PACKAGE IDENTIFICADOR .
+
+    IMPORT          reduce using rule 4 (package_statement -> PACKAGE IDENTIFICADOR .)
+
+
+state 40
+
+    (24) assignment_statement -> IDENTIFICADOR IGUAL . NUMERO
+    (25) assignment_statement -> IDENTIFICADOR IGUAL . IDENTIFICADOR MAS IDENTIFICADOR
+    (27) condition_statement -> IDENTIFICADOR IGUAL . IGUAL NUMERO
+    (32) arithmetic_operation -> IDENTIFICADOR IGUAL . NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> IDENTIFICADOR IGUAL . NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> IDENTIFICADOR IGUAL . IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> IDENTIFICADOR IGUAL . IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL . IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> IDENTIFICADOR IGUAL . NUMERO MAS NUMERO
+    (19) condition -> IDENTIFICADOR IGUAL . IGUAL NUMERO
+
+    NUMERO          shift and go to state 64
+    IDENTIFICADOR   shift and go to state 62
+    IGUAL           shift and go to state 63
+
+
+state 41
+
+    (30) increment_statement -> IDENTIFICADOR MAS . MAS
+
+    MAS             shift and go to state 65
+
+
+state 42
+
+    (26) condition_statement -> IDENTIFICADOR MENOR_IGUAL . NUMERO
+
+    NUMERO          shift and go to state 66
+
+
+state 43
+
+    (28) condition_statement -> IDENTIFICADOR MAYOR . NUMERO
+
+    NUMERO          shift and go to state 67
+
+
+state 44
+
+    (29) condition_statement -> IDENTIFICADOR MAYOR_IGUAL . NUMERO
+
+    NUMERO          shift and go to state 68
+
+
+state 45
+
+    (31) increment_statement -> IDENTIFICADOR MAS_IGUAL . NUMERO
+
+    NUMERO          shift and go to state 69
+
+
+state 46
+
+    (17) pakatreice_statement -> DO arithmetic_operation . PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+
+    PUNTO_Y_COMA    shift and go to state 70
+
+
+state 47
+
+    (32) arithmetic_operation -> IDENTIFICADOR . IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> IDENTIFICADOR . IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> IDENTIFICADOR . IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> IDENTIFICADOR . IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR . IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> IDENTIFICADOR . IGUAL NUMERO MAS NUMERO
+
+    IGUAL           shift and go to state 71
+
+
+state 48
+
+    (15) while_statement -> WHILE ABIERTO . IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    IDENTIFICADOR   shift and go to state 72
+
+
+state 49
+
+    (9) print_go_statement -> FMT PUNTO . PRINTLN ABIERTO CADENA CERRADO
+
+    PRINTLN         shift and go to state 73
+
+
+state 50
+
+    (16) print_statement -> SYSTEM PUNTO . OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    OUT             shift and go to state 74
+
+
+state 51
+
+    (10) variable_declaration -> INT IDENTIFICADOR . IGUAL NUMERO PUNTO_Y_COMA
+    (11) variable_declaration_simple -> INT IDENTIFICADOR . PUNTO_Y_COMA
+    (22) line_declaration_statement -> INT IDENTIFICADOR . COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (18) condition -> INT IDENTIFICADOR . IGUAL IGUAL NUMERO
+
+    IGUAL           shift and go to state 75
+    PUNTO_Y_COMA    shift and go to state 76
+    COMA            shift and go to state 77
+
+
+state 52
+
+    (21) main_statement -> INT MAIN . ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 78
+
+
+state 53
+
+    (12) float_declaration -> FLOAT IDENTIFICADOR . IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA
+
+    IGUAL           shift and go to state 79
+
+
+state 54
+
+    (13) string_declaration -> STRING IDENTIFICADOR . IGUAL CADENA PUNTO_Y_COMA
+
+    IGUAL           shift and go to state 80
+
+
+state 55
+
+    (14) if_statement -> IF ABIERTO . condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+    (26) condition_statement -> . IDENTIFICADOR MENOR_IGUAL NUMERO
+    (27) condition_statement -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+    (28) condition_statement -> . IDENTIFICADOR MAYOR NUMERO
+    (29) condition_statement -> . IDENTIFICADOR MAYOR_IGUAL NUMERO
+
+    IDENTIFICADOR   shift and go to state 82
+
+    condition_statement            shift and go to state 81
+
+state 56
+
+    (23) for_statement -> FOR ABIERTO . assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (24) assignment_statement -> . IDENTIFICADOR IGUAL NUMERO
+    (25) assignment_statement -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+
+    IDENTIFICADOR   shift and go to state 84
+
+    assignment_statement           shift and go to state 83
+
+state 57
+
+    (20) library_statement -> GATO INCLUDE . MENOR STDIO PUNTO H MAYOR
+
+    MENOR           shift and go to state 85
+
+
+state 58
+
+    (3) go_program -> package_statement import_statement function_list .
+
+    $end            reduce using rule 3 (go_program -> package_statement import_statement function_list .)
+
+
+state 59
+
+    (6) function_list -> function .
+    (7) function_list -> function . function_list
+    (6) function_list -> . function
+    (7) function_list -> . function function_list
+    (8) function -> . FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA
+
+    $end            reduce using rule 6 (function_list -> function .)
+    FUNC            shift and go to state 60
+
+    function                       shift and go to state 59
+    function_list                  shift and go to state 86
+
+state 60
+
+    (8) function -> FUNC . pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA
+
+    pepe            shift and go to state 87
+
+
+state 61
+
+    (5) import_statement -> IMPORT CADENA .
+
+    FUNC            reduce using rule 5 (import_statement -> IMPORT CADENA .)
+
+
+state 62
+
+    (25) assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR . MAS IDENTIFICADOR
+    (34) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR . POR NUMERO
+    (35) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR . MAS NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR . MAS IDENTIFICADOR
+
+    MAS             shift and go to state 88
+    POR             shift and go to state 89
+
+
+state 63
+
+    (27) condition_statement -> IDENTIFICADOR IGUAL IGUAL . NUMERO
+    (19) condition -> IDENTIFICADOR IGUAL IGUAL . NUMERO
+
+    NUMERO          shift and go to state 90
+
+
+state 64
+
+    (24) assignment_statement -> IDENTIFICADOR IGUAL NUMERO .
+    (32) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO . POR IDENTIFICADOR
+    (33) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO . MAS IDENTIFICADOR
+    (37) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO . MAS NUMERO
+
+    DO              reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    FMT             reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    SYSTEM          reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    INT             reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    FLOAT           reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    STRING          reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    IF              reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    WHILE           reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    GATO            reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    FOR             reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    IDENTIFICADOR   reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    $end            reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    LLAVE_CERRADA   reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+    POR             shift and go to state 91
+    MAS             shift and go to state 92
+
+
+state 65
+
+    (30) increment_statement -> IDENTIFICADOR MAS MAS .
+
+    DO              reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    FMT             reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    SYSTEM          reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    INT             reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    FLOAT           reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    STRING          reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    IF              reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    WHILE           reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    GATO            reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    FOR             reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    IDENTIFICADOR   reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    $end            reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    CERRADO         reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+    LLAVE_CERRADA   reduce using rule 30 (increment_statement -> IDENTIFICADOR MAS MAS .)
+
+
+state 66
+
+    (26) condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .
+
+    DO              reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    FMT             reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    SYSTEM          reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    INT             reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    FLOAT           reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    STRING          reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    IF              reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    WHILE           reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    GATO            reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    FOR             reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    IDENTIFICADOR   reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    $end            reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    AND             reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+    LLAVE_CERRADA   reduce using rule 26 (condition_statement -> IDENTIFICADOR MENOR_IGUAL NUMERO .)
+
+
+state 67
+
+    (28) condition_statement -> IDENTIFICADOR MAYOR NUMERO .
+
+    DO              reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    FMT             reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    SYSTEM          reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    INT             reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    FLOAT           reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    STRING          reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    IF              reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    WHILE           reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    GATO            reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    FOR             reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    IDENTIFICADOR   reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    $end            reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    AND             reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+    LLAVE_CERRADA   reduce using rule 28 (condition_statement -> IDENTIFICADOR MAYOR NUMERO .)
+
+
+state 68
+
+    (29) condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .
+
+    DO              reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    FMT             reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    SYSTEM          reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    INT             reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    FLOAT           reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    STRING          reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    IF              reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    WHILE           reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    GATO            reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    FOR             reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    IDENTIFICADOR   reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    $end            reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    AND             reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+    LLAVE_CERRADA   reduce using rule 29 (condition_statement -> IDENTIFICADOR MAYOR_IGUAL NUMERO .)
+
+
+state 69
+
+    (31) increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .
+
+    DO              reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    FMT             reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    SYSTEM          reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    INT             reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    FLOAT           reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    STRING          reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    IF              reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    WHILE           reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    GATO            reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    FOR             reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    IDENTIFICADOR   reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    $end            reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    CERRADO         reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+    LLAVE_CERRADA   reduce using rule 31 (increment_statement -> IDENTIFICADOR MAS_IGUAL NUMERO .)
+
+
+state 70
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA . arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+
+    IDENTIFICADOR   shift and go to state 47
+
+    arithmetic_operation           shift and go to state 93
+
+state 71
+
+    (32) arithmetic_operation -> IDENTIFICADOR IGUAL . NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> IDENTIFICADOR IGUAL . NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> IDENTIFICADOR IGUAL . IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> IDENTIFICADOR IGUAL . IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL . IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> IDENTIFICADOR IGUAL . NUMERO MAS NUMERO
+
+    NUMERO          shift and go to state 95
+    IDENTIFICADOR   shift and go to state 94
+
+
+state 72
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR . MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    MAYOR           shift and go to state 96
+
+
+state 73
+
+    (9) print_go_statement -> FMT PUNTO PRINTLN . ABIERTO CADENA CERRADO
+
+    ABIERTO         shift and go to state 97
+
+
+state 74
+
+    (16) print_statement -> SYSTEM PUNTO OUT . PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    PUNTO           shift and go to state 98
+
+
+state 75
+
+    (10) variable_declaration -> INT IDENTIFICADOR IGUAL . NUMERO PUNTO_Y_COMA
+    (18) condition -> INT IDENTIFICADOR IGUAL . IGUAL NUMERO
+
+    NUMERO          shift and go to state 100
+    IGUAL           shift and go to state 99
+
+
+state 76
+
+    (11) variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .
+
+    DO              reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    FMT             reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    SYSTEM          reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    INT             reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    FLOAT           reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    STRING          reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    IF              reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    WHILE           reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    GATO            reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    FOR             reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    IDENTIFICADOR   reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    $end            reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+    LLAVE_CERRADA   reduce using rule 11 (variable_declaration_simple -> INT IDENTIFICADOR PUNTO_Y_COMA .)
+
+
+state 77
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR COMA . IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+
+    IDENTIFICADOR   shift and go to state 101
+
+
+state 78
+
+    (21) main_statement -> INT MAIN ABIERTO . CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+
+    CERRADO         shift and go to state 102
+
+
+state 79
+
+    (12) float_declaration -> FLOAT IDENTIFICADOR IGUAL . NUMERO PUNTO NUMERO PUNTO_Y_COMA
+
+    NUMERO          shift and go to state 103
+
+
+state 80
+
+    (13) string_declaration -> STRING IDENTIFICADOR IGUAL . CADENA PUNTO_Y_COMA
+
+    CADENA          shift and go to state 104
+
+
+state 81
+
+    (14) if_statement -> IF ABIERTO condition_statement . AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+
+    AND             shift and go to state 105
+
+
+state 82
+
+    (26) condition_statement -> IDENTIFICADOR . MENOR_IGUAL NUMERO
+    (27) condition_statement -> IDENTIFICADOR . IGUAL IGUAL NUMERO
+    (28) condition_statement -> IDENTIFICADOR . MAYOR NUMERO
+    (29) condition_statement -> IDENTIFICADOR . MAYOR_IGUAL NUMERO
+
+    MENOR_IGUAL     shift and go to state 42
+    IGUAL           shift and go to state 106
+    MAYOR           shift and go to state 43
+    MAYOR_IGUAL     shift and go to state 44
+
+
+state 83
+
+    (23) for_statement -> FOR ABIERTO assignment_statement . PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+
+    PUNTO_Y_COMA    shift and go to state 107
+
+
+state 84
+
+    (24) assignment_statement -> IDENTIFICADOR . IGUAL NUMERO
+    (25) assignment_statement -> IDENTIFICADOR . IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+
+    IGUAL           shift and go to state 108
+
+
+state 85
+
+    (20) library_statement -> GATO INCLUDE MENOR . STDIO PUNTO H MAYOR
+
+    STDIO           shift and go to state 109
+
+
+state 86
+
+    (7) function_list -> function function_list .
+
+    $end            reduce using rule 7 (function_list -> function function_list .)
+
+
+state 87
+
+    (8) function -> FUNC pepe . ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 110
+
+
+state 88
+
+    (25) assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS . IDENTIFICADOR
+    (35) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS . NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS . IDENTIFICADOR
+
+    IDENTIFICADOR   shift and go to state 111
+    NUMERO          shift and go to state 112
+
+
+state 89
+
+    (34) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR . NUMERO
+
+    NUMERO          shift and go to state 113
+
+
+state 90
+
+    (27) condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .
+    (19) condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .
+
+  ! reduce/reduce conflict for DO resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for FMT resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for SYSTEM resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for INT resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for FLOAT resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for STRING resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for IF resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for WHILE resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for GATO resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for FOR resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for IDENTIFICADOR resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for $end resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+  ! reduce/reduce conflict for LLAVE_CERRADA resolved using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    DO              reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    FMT             reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    SYSTEM          reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    INT             reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    FLOAT           reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    STRING          reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    IF              reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    WHILE           reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    GATO            reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    FOR             reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    IDENTIFICADOR   reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    $end            reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    LLAVE_CERRADA   reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+
+  ! DO              [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! FMT             [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! SYSTEM          [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! INT             [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! FLOAT           [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! STRING          [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! IF              [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! WHILE           [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! GATO            [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! FOR             [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! IDENTIFICADOR   [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! $end            [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+  ! LLAVE_CERRADA   [ reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .) ]
+
+
+state 91
+
+    (32) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR . IDENTIFICADOR
+
+    IDENTIFICADOR   shift and go to state 114
+
+
+state 92
+
+    (33) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS . IDENTIFICADOR
+    (37) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS . NUMERO
+
+    IDENTIFICADOR   shift and go to state 115
+    NUMERO          shift and go to state 116
+
+
+state 93
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation . PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+
+    PUNTO_Y_COMA    shift and go to state 117
+
+
+state 94
+
+    (34) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR . POR NUMERO
+    (35) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR . MAS NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR . MAS IDENTIFICADOR
+
+    POR             shift and go to state 89
+    MAS             shift and go to state 118
+
+
+state 95
+
+    (32) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO . POR IDENTIFICADOR
+    (33) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO . MAS IDENTIFICADOR
+    (37) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO . MAS NUMERO
+
+    POR             shift and go to state 91
+    MAS             shift and go to state 92
+
+
+state 96
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR . NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 119
+
+
+state 97
+
+    (9) print_go_statement -> FMT PUNTO PRINTLN ABIERTO . CADENA CERRADO
+
+    CADENA          shift and go to state 120
+
+
+state 98
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO . PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    PRINTLN         shift and go to state 121
+
+
+state 99
+
+    (18) condition -> INT IDENTIFICADOR IGUAL IGUAL . NUMERO
+
+    NUMERO          shift and go to state 122
+
+
+state 100
+
+    (10) variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO . PUNTO_Y_COMA
+
+    PUNTO_Y_COMA    shift and go to state 123
+
+
+state 101
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR . COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+
+    COMA            shift and go to state 124
+
+
+state 102
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO . LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+
+    LLAVE_ABIERTA   shift and go to state 125
+
+
+state 103
+
+    (12) float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO . PUNTO NUMERO PUNTO_Y_COMA
+
+    PUNTO           shift and go to state 126
+
+
+state 104
+
+    (13) string_declaration -> STRING IDENTIFICADOR IGUAL CADENA . PUNTO_Y_COMA
+
+    PUNTO_Y_COMA    shift and go to state 127
+
+
+state 105
+
+    (14) if_statement -> IF ABIERTO condition_statement AND . NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+
+    NUMERO          shift and go to state 128
+
+
+state 106
+
+    (27) condition_statement -> IDENTIFICADOR IGUAL . IGUAL NUMERO
+
+    IGUAL           shift and go to state 129
+
+
+state 107
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA . condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (26) condition_statement -> . IDENTIFICADOR MENOR_IGUAL NUMERO
+    (27) condition_statement -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+    (28) condition_statement -> . IDENTIFICADOR MAYOR NUMERO
+    (29) condition_statement -> . IDENTIFICADOR MAYOR_IGUAL NUMERO
+
+    IDENTIFICADOR   shift and go to state 82
+
+    condition_statement            shift and go to state 130
+
+state 108
+
+    (24) assignment_statement -> IDENTIFICADOR IGUAL . NUMERO
+    (25) assignment_statement -> IDENTIFICADOR IGUAL . IDENTIFICADOR MAS IDENTIFICADOR
+
+    NUMERO          shift and go to state 132
+    IDENTIFICADOR   shift and go to state 131
+
+
+state 109
+
+    (20) library_statement -> GATO INCLUDE MENOR STDIO . PUNTO H MAYOR
+
+    PUNTO           shift and go to state 133
+
+
+state 110
+
+    (8) function -> FUNC pepe ABIERTO . CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA
+
+    CERRADO         shift and go to state 134
+
+
+state 111
+
+    (25) assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .
+
+  ! reduce/reduce conflict for DO resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for FMT resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for SYSTEM resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for INT resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for FLOAT resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for STRING resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for IF resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for WHILE resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for GATO resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for FOR resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for IDENTIFICADOR resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for $end resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+  ! reduce/reduce conflict for LLAVE_CERRADA resolved using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    DO              reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    FMT             reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    SYSTEM          reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    INT             reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    FLOAT           reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    STRING          reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    IF              reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    WHILE           reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    GATO            reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    FOR             reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    IDENTIFICADOR   reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    $end            reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+    LLAVE_CERRADA   reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+
+  ! DO              [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! FMT             [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! SYSTEM          [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! INT             [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! FLOAT           [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! STRING          [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! IF              [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! WHILE           [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! GATO            [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! FOR             [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! IDENTIFICADOR   [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! $end            [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+  ! LLAVE_CERRADA   [ reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .) ]
+
+
+state 112
+
+    (35) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .
+
+    DO              reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    FMT             reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    SYSTEM          reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    INT             reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    FLOAT           reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    STRING          reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    IF              reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    WHILE           reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    GATO            reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    FOR             reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    IDENTIFICADOR   reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    $end            reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+    LLAVE_CERRADA   reduce using rule 35 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO .)
+
+
+state 113
+
+    (34) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .
+
+    DO              reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    FMT             reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    SYSTEM          reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    INT             reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    FLOAT           reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    STRING          reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    IF              reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    WHILE           reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    GATO            reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    FOR             reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    IDENTIFICADOR   reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    $end            reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+    LLAVE_CERRADA   reduce using rule 34 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO .)
+
+
+state 114
+
+    (32) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .
+
+    DO              reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    FMT             reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    SYSTEM          reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    INT             reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    FLOAT           reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    STRING          reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    IF              reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    WHILE           reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    GATO            reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    FOR             reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    IDENTIFICADOR   reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    $end            reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    PUNTO_Y_COMA    reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+    LLAVE_CERRADA   reduce using rule 32 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR .)
+
+
+state 115
+
+    (33) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .
+
+    DO              reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    FMT             reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    SYSTEM          reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    INT             reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    FLOAT           reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    STRING          reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    IF              reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    WHILE           reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    GATO            reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    FOR             reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    IDENTIFICADOR   reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    $end            reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    PUNTO_Y_COMA    reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+    LLAVE_CERRADA   reduce using rule 33 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR .)
+
+
+state 116
+
+    (37) arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .
+
+    DO              reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    FMT             reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    SYSTEM          reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    INT             reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    FLOAT           reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    STRING          reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    IF              reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    WHILE           reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    GATO            reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    FOR             reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    IDENTIFICADOR   reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    $end            reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+    LLAVE_CERRADA   reduce using rule 37 (arithmetic_operation -> IDENTIFICADOR IGUAL NUMERO MAS NUMERO .)
+
+
+state 117
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA . ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+
+    ENDDO           shift and go to state 135
+
+
+state 118
+
+    (35) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS . NUMERO
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS . IDENTIFICADOR
+
+    NUMERO          shift and go to state 112
+    IDENTIFICADOR   shift and go to state 136
+
+
+state 119
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO . CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    CERRADO         shift and go to state 137
+
+
+state 120
+
+    (9) print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA . CERRADO
+
+    CERRADO         shift and go to state 138
+
+
+state 121
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN . ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    ABIERTO         shift and go to state 139
+
+
+state 122
+
+    (18) condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .
+
+    DO              reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    FMT             reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    SYSTEM          reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    INT             reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    FLOAT           reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    STRING          reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    IF              reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    WHILE           reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    GATO            reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    FOR             reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    IDENTIFICADOR   reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    $end            reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    LLAVE_CERRADA   reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    CERRADO         reduce using rule 18 (condition -> INT IDENTIFICADOR IGUAL IGUAL NUMERO .)
+
+
+state 123
+
+    (10) variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .
+
+    DO              reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    FMT             reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    SYSTEM          reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    INT             reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    FLOAT           reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    STRING          reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    IF              reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    WHILE           reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    GATO            reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    FOR             reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    IDENTIFICADOR   reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    $end            reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    LLAVE_CERRADA   reduce using rule 10 (variable_declaration -> INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+
+
+state 124
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA . IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+
+    IDENTIFICADOR   shift and go to state 140
+
+
+state 125
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA . line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+    (22) line_declaration_statement -> . INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+
+    INT             shift and go to state 141
+
+    line_declaration_statement     shift and go to state 142
+
+state 126
+
+    (12) float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO . NUMERO PUNTO_Y_COMA
+
+    NUMERO          shift and go to state 143
+
+
+state 127
+
+    (13) string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .
+
+    DO              reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    FMT             reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    SYSTEM          reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    INT             reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    FLOAT           reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    STRING          reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    IF              reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    WHILE           reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    GATO            reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    FOR             reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    IDENTIFICADOR   reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    $end            reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+    LLAVE_CERRADA   reduce using rule 13 (string_declaration -> STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA .)
+
+
+state 128
+
+    (14) if_statement -> IF ABIERTO condition_statement AND NUMERO . MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+
+    MAYOR           shift and go to state 144
+
+
+state 129
+
+    (27) condition_statement -> IDENTIFICADOR IGUAL IGUAL . NUMERO
+
+    NUMERO          shift and go to state 145
+
+
+state 130
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement . PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+
+    PUNTO_Y_COMA    shift and go to state 146
+
+
+state 131
+
+    (25) assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR . MAS IDENTIFICADOR
+
+    MAS             shift and go to state 147
+
+
+state 132
+
+    (24) assignment_statement -> IDENTIFICADOR IGUAL NUMERO .
+
+    PUNTO_Y_COMA    reduce using rule 24 (assignment_statement -> IDENTIFICADOR IGUAL NUMERO .)
+
+
+state 133
+
+    (20) library_statement -> GATO INCLUDE MENOR STDIO PUNTO . H MAYOR
+
+    H               shift and go to state 148
+
+
+state 134
+
+    (8) function -> FUNC pepe ABIERTO CERRADO . LLAVE_ABIERTA statement_list LLAVE_CERRADA
+
+    LLAVE_ABIERTA   shift and go to state 149
+
+
+state 135
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO . WHILE ABIERTO condition CERRADO ENDWHILE
+
+    WHILE           shift and go to state 150
+
+
+state 136
+
+    (36) arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .
+
+    PUNTO_Y_COMA    reduce using rule 36 (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+
+
+state 137
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO . LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    LLAVE_ABIERTA   shift and go to state 151
+
+
+state 138
+
+    (9) print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .
+
+    DO              reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    FMT             reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    SYSTEM          reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    INT             reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    FLOAT           reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    STRING          reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    IF              reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    WHILE           reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    GATO            reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    FOR             reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    IDENTIFICADOR   reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    $end            reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+    LLAVE_CERRADA   reduce using rule 9 (print_go_statement -> FMT PUNTO PRINTLN ABIERTO CADENA CERRADO .)
+
+
+state 139
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO . CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    CADENA          shift and go to state 152
+
+
+state 140
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR . IGUAL NUMERO PUNTO_Y_COMA
+
+    IGUAL           shift and go to state 153
+
+
+state 141
+
+    (22) line_declaration_statement -> INT . IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+
+    IDENTIFICADOR   shift and go to state 154
+
+
+state 142
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement . for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+    (23) for_statement -> . FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+
+    FOR             shift and go to state 34
+
+    for_statement                  shift and go to state 155
+
+state 143
+
+    (12) float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO . PUNTO_Y_COMA
+
+    PUNTO_Y_COMA    shift and go to state 156
+
+
+state 144
+
+    (14) if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR . NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+
+    NUMERO          shift and go to state 157
+
+
+state 145
+
+    (27) condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .
+
+    AND             reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 27 (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+
+
+state 146
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA . increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (30) increment_statement -> . IDENTIFICADOR MAS MAS
+    (31) increment_statement -> . IDENTIFICADOR MAS_IGUAL NUMERO
+
+    IDENTIFICADOR   shift and go to state 159
+
+    increment_statement            shift and go to state 158
+
+state 147
+
+    (25) assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS . IDENTIFICADOR
+
+    IDENTIFICADOR   shift and go to state 160
+
+
+state 148
+
+    (20) library_statement -> GATO INCLUDE MENOR STDIO PUNTO H . MAYOR
+
+    MAYOR           shift and go to state 161
+
+
+state 149
+
+    (8) function -> FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA . statement_list LLAVE_CERRADA
+    (57) statement_list -> . statement
+    (58) statement_list -> . statement_list statement
+    (38) statement -> .
+    (39) statement -> . pakatreice_statement
+    (40) statement -> . print_go_statement
+    (41) statement -> . print_statement
+    (42) statement -> . variable_declaration
+    (43) statement -> . variable_declaration_simple
+    (44) statement -> . float_declaration
+    (45) statement -> . string_declaration
+    (46) statement -> . if_statement
+    (47) statement -> . while_statement
+    (48) statement -> . library_statement
+    (49) statement -> . main_statement
+    (50) statement -> . line_declaration_statement
+    (51) statement -> . for_statement
+    (52) statement -> . assignment_statement
+    (53) statement -> . condition_statement
+    (54) statement -> . increment_statement
+    (55) statement -> . arithmetic_operation
+    (56) statement -> . condition
+    (17) pakatreice_statement -> . DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+    (9) print_go_statement -> . FMT PUNTO PRINTLN ABIERTO CADENA CERRADO
+    (16) print_statement -> . SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+    (10) variable_declaration -> . INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (11) variable_declaration_simple -> . INT IDENTIFICADOR PUNTO_Y_COMA
+    (12) float_declaration -> . FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA
+    (13) string_declaration -> . STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA
+    (14) if_statement -> . IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+    (15) while_statement -> . WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+    (20) library_statement -> . GATO INCLUDE MENOR STDIO PUNTO H MAYOR
+    (21) main_statement -> . INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+    (22) line_declaration_statement -> . INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (23) for_statement -> . FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (24) assignment_statement -> . IDENTIFICADOR IGUAL NUMERO
+    (25) assignment_statement -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (26) condition_statement -> . IDENTIFICADOR MENOR_IGUAL NUMERO
+    (27) condition_statement -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+    (28) condition_statement -> . IDENTIFICADOR MAYOR NUMERO
+    (29) condition_statement -> . IDENTIFICADOR MAYOR_IGUAL NUMERO
+    (30) increment_statement -> . IDENTIFICADOR MAS MAS
+    (31) increment_statement -> . IDENTIFICADOR MAS_IGUAL NUMERO
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+    (18) condition -> . INT IDENTIFICADOR IGUAL IGUAL NUMERO
+    (19) condition -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for FMT resolved as shift
+  ! shift/reduce conflict for SYSTEM resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for GATO resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for IDENTIFICADOR resolved as shift
+    LLAVE_CERRADA   reduce using rule 38 (statement -> .)
+    DO              shift and go to state 26
+    FMT             shift and go to state 28
+    SYSTEM          shift and go to state 29
+    INT             shift and go to state 30
+    FLOAT           shift and go to state 31
+    STRING          shift and go to state 32
+    IF              shift and go to state 33
+    WHILE           shift and go to state 27
+    GATO            shift and go to state 35
+    FOR             shift and go to state 34
+    IDENTIFICADOR   shift and go to state 25
+
+  ! DO              [ reduce using rule 38 (statement -> .) ]
+  ! FMT             [ reduce using rule 38 (statement -> .) ]
+  ! SYSTEM          [ reduce using rule 38 (statement -> .) ]
+  ! INT             [ reduce using rule 38 (statement -> .) ]
+  ! FLOAT           [ reduce using rule 38 (statement -> .) ]
+  ! STRING          [ reduce using rule 38 (statement -> .) ]
+  ! IF              [ reduce using rule 38 (statement -> .) ]
+  ! WHILE           [ reduce using rule 38 (statement -> .) ]
+  ! GATO            [ reduce using rule 38 (statement -> .) ]
+  ! FOR             [ reduce using rule 38 (statement -> .) ]
+  ! IDENTIFICADOR   [ reduce using rule 38 (statement -> .) ]
+
+    statement_list                 shift and go to state 162
+    statement                      shift and go to state 4
+    pakatreice_statement           shift and go to state 6
+    print_go_statement             shift and go to state 7
+    print_statement                shift and go to state 8
+    variable_declaration           shift and go to state 9
+    variable_declaration_simple    shift and go to state 10
+    float_declaration              shift and go to state 11
+    string_declaration             shift and go to state 12
+    if_statement                   shift and go to state 13
+    while_statement                shift and go to state 14
+    library_statement              shift and go to state 15
+    main_statement                 shift and go to state 16
+    line_declaration_statement     shift and go to state 17
+    for_statement                  shift and go to state 18
+    assignment_statement           shift and go to state 19
+    condition_statement            shift and go to state 20
+    increment_statement            shift and go to state 21
+    arithmetic_operation           shift and go to state 22
+    condition                      shift and go to state 23
+
+state 150
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE . ABIERTO condition CERRADO ENDWHILE
+
+    ABIERTO         shift and go to state 163
+
+
+state 151
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA . INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    INPUT           shift and go to state 164
+
+
+state 152
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA . MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    MAS             shift and go to state 165
+
+
+state 153
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL . NUMERO PUNTO_Y_COMA
+
+    NUMERO          shift and go to state 166
+
+
+state 154
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR . COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+
+    COMA            shift and go to state 77
+
+
+state 155
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement . RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+
+    RETURN          shift and go to state 167
+
+
+state 156
+
+    (12) float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .
+
+    DO              reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    FMT             reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    SYSTEM          reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    INT             reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    FLOAT           reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    STRING          reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    IF              reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    WHILE           reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    GATO            reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    FOR             reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    IDENTIFICADOR   reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    $end            reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+    LLAVE_CERRADA   reduce using rule 12 (float_declaration -> FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA .)
+
+
+state 157
+
+    (14) if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO . CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+
+    CERRADO         shift and go to state 168
+
+
+state 158
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement . CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+
+    CERRADO         shift and go to state 169
+
+
+state 159
+
+    (30) increment_statement -> IDENTIFICADOR . MAS MAS
+    (31) increment_statement -> IDENTIFICADOR . MAS_IGUAL NUMERO
+
+    MAS             shift and go to state 41
+    MAS_IGUAL       shift and go to state 45
+
+
+state 160
+
+    (25) assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .
+
+    PUNTO_Y_COMA    reduce using rule 25 (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR .)
+
+
+state 161
+
+    (20) library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .
+
+    DO              reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    FMT             reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    SYSTEM          reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    INT             reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    FLOAT           reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    STRING          reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    IF              reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    WHILE           reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    GATO            reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    FOR             reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    IDENTIFICADOR   reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    $end            reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+    LLAVE_CERRADA   reduce using rule 20 (library_statement -> GATO INCLUDE MENOR STDIO PUNTO H MAYOR .)
+
+
+state 162
+
+    (8) function -> FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list . LLAVE_CERRADA
+    (58) statement_list -> statement_list . statement
+    (38) statement -> .
+    (39) statement -> . pakatreice_statement
+    (40) statement -> . print_go_statement
+    (41) statement -> . print_statement
+    (42) statement -> . variable_declaration
+    (43) statement -> . variable_declaration_simple
+    (44) statement -> . float_declaration
+    (45) statement -> . string_declaration
+    (46) statement -> . if_statement
+    (47) statement -> . while_statement
+    (48) statement -> . library_statement
+    (49) statement -> . main_statement
+    (50) statement -> . line_declaration_statement
+    (51) statement -> . for_statement
+    (52) statement -> . assignment_statement
+    (53) statement -> . condition_statement
+    (54) statement -> . increment_statement
+    (55) statement -> . arithmetic_operation
+    (56) statement -> . condition
+    (17) pakatreice_statement -> . DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE
+    (9) print_go_statement -> . FMT PUNTO PRINTLN ABIERTO CADENA CERRADO
+    (16) print_statement -> . SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA
+    (10) variable_declaration -> . INT IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (11) variable_declaration_simple -> . INT IDENTIFICADOR PUNTO_Y_COMA
+    (12) float_declaration -> . FLOAT IDENTIFICADOR IGUAL NUMERO PUNTO NUMERO PUNTO_Y_COMA
+    (13) string_declaration -> . STRING IDENTIFICADOR IGUAL CADENA PUNTO_Y_COMA
+    (14) if_statement -> . IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA
+    (15) while_statement -> . WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+    (20) library_statement -> . GATO INCLUDE MENOR STDIO PUNTO H MAYOR
+    (21) main_statement -> . INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+    (22) line_declaration_statement -> . INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA
+    (23) for_statement -> . FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (24) assignment_statement -> . IDENTIFICADOR IGUAL NUMERO
+    (25) assignment_statement -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (26) condition_statement -> . IDENTIFICADOR MENOR_IGUAL NUMERO
+    (27) condition_statement -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+    (28) condition_statement -> . IDENTIFICADOR MAYOR NUMERO
+    (29) condition_statement -> . IDENTIFICADOR MAYOR_IGUAL NUMERO
+    (30) increment_statement -> . IDENTIFICADOR MAS MAS
+    (31) increment_statement -> . IDENTIFICADOR MAS_IGUAL NUMERO
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+    (18) condition -> . INT IDENTIFICADOR IGUAL IGUAL NUMERO
+    (19) condition -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+
+  ! shift/reduce conflict for LLAVE_CERRADA resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
+  ! shift/reduce conflict for FMT resolved as shift
+  ! shift/reduce conflict for SYSTEM resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for GATO resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for IDENTIFICADOR resolved as shift
+    LLAVE_CERRADA   shift and go to state 170
+    DO              shift and go to state 26
+    FMT             shift and go to state 28
+    SYSTEM          shift and go to state 29
+    INT             shift and go to state 30
+    FLOAT           shift and go to state 31
+    STRING          shift and go to state 32
+    IF              shift and go to state 33
+    WHILE           shift and go to state 27
+    GATO            shift and go to state 35
+    FOR             shift and go to state 34
+    IDENTIFICADOR   shift and go to state 25
+
+  ! LLAVE_CERRADA   [ reduce using rule 38 (statement -> .) ]
+  ! DO              [ reduce using rule 38 (statement -> .) ]
+  ! FMT             [ reduce using rule 38 (statement -> .) ]
+  ! SYSTEM          [ reduce using rule 38 (statement -> .) ]
+  ! INT             [ reduce using rule 38 (statement -> .) ]
+  ! FLOAT           [ reduce using rule 38 (statement -> .) ]
+  ! STRING          [ reduce using rule 38 (statement -> .) ]
+  ! IF              [ reduce using rule 38 (statement -> .) ]
+  ! WHILE           [ reduce using rule 38 (statement -> .) ]
+  ! GATO            [ reduce using rule 38 (statement -> .) ]
+  ! FOR             [ reduce using rule 38 (statement -> .) ]
+  ! IDENTIFICADOR   [ reduce using rule 38 (statement -> .) ]
+
+    statement                      shift and go to state 36
+    pakatreice_statement           shift and go to state 6
+    print_go_statement             shift and go to state 7
+    print_statement                shift and go to state 8
+    variable_declaration           shift and go to state 9
+    variable_declaration_simple    shift and go to state 10
+    float_declaration              shift and go to state 11
+    string_declaration             shift and go to state 12
+    if_statement                   shift and go to state 13
+    while_statement                shift and go to state 14
+    library_statement              shift and go to state 15
+    main_statement                 shift and go to state 16
+    line_declaration_statement     shift and go to state 17
+    for_statement                  shift and go to state 18
+    assignment_statement           shift and go to state 19
+    condition_statement            shift and go to state 20
+    increment_statement            shift and go to state 21
+    arithmetic_operation           shift and go to state 22
+    condition                      shift and go to state 23
+
+state 163
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO . condition CERRADO ENDWHILE
+    (18) condition -> . INT IDENTIFICADOR IGUAL IGUAL NUMERO
+    (19) condition -> . IDENTIFICADOR IGUAL IGUAL NUMERO
+
+    INT             shift and go to state 172
+    IDENTIFICADOR   shift and go to state 173
+
+    condition                      shift and go to state 171
+
+state 164
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT . ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 174
+
+
+state 165
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS . IDENTIFICADOR CERRADO PUNTO_Y_COMA
+
+    IDENTIFICADOR   shift and go to state 175
+
+
+state 166
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO . PUNTO_Y_COMA
+
+    PUNTO_Y_COMA    shift and go to state 176
+
+
+state 167
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN . NUMERO PUNTO_Y_COMA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 177
+
+
+state 168
+
+    (14) if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO . LLAVE_ABIERTA while_statement LLAVE_CERRADA
+
+    LLAVE_ABIERTA   shift and go to state 178
+
+
+state 169
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO . LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+
+    LLAVE_ABIERTA   shift and go to state 179
+
+
+state 170
+
+    (8) function -> FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA .
+
+    FUNC            reduce using rule 8 (function -> FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA .)
+    $end            reduce using rule 8 (function -> FUNC pepe ABIERTO CERRADO LLAVE_ABIERTA statement_list LLAVE_CERRADA .)
+
+
+state 171
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition . CERRADO ENDWHILE
+
+    CERRADO         shift and go to state 180
+
+
+state 172
+
+    (18) condition -> INT . IDENTIFICADOR IGUAL IGUAL NUMERO
+
+    IDENTIFICADOR   shift and go to state 181
+
+
+state 173
+
+    (19) condition -> IDENTIFICADOR . IGUAL IGUAL NUMERO
+
+    IGUAL           shift and go to state 182
+
+
+state 174
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO . NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 183
+
+
+state 175
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR . CERRADO PUNTO_Y_COMA
+
+    CERRADO         shift and go to state 184
+
+
+state 176
+
+    (22) line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .
+
+    DO              reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    FMT             reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    SYSTEM          reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    INT             reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    FLOAT           reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    STRING          reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    IF              reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    WHILE           reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    GATO            reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    FOR             reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    IDENTIFICADOR   reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    $end            reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+    LLAVE_CERRADA   reduce using rule 22 (line_declaration_statement -> INT IDENTIFICADOR COMA IDENTIFICADOR COMA IDENTIFICADOR IGUAL NUMERO PUNTO_Y_COMA .)
+
+
+state 177
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO . PUNTO_Y_COMA LLAVE_CERRADA
+
+    PUNTO_Y_COMA    shift and go to state 185
+
+
+state 178
+
+    (14) if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA . while_statement LLAVE_CERRADA
+    (15) while_statement -> . WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    WHILE           shift and go to state 27
+
+    while_statement                shift and go to state 186
+
+state 179
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA . arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+
+    IDENTIFICADOR   shift and go to state 47
+
+    arithmetic_operation           shift and go to state 187
+
+state 180
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO . ENDWHILE
+
+    ENDWHILE        shift and go to state 188
+
+
+state 181
+
+    (18) condition -> INT IDENTIFICADOR . IGUAL IGUAL NUMERO
+
+    IGUAL           shift and go to state 189
+
+
+state 182
+
+    (19) condition -> IDENTIFICADOR IGUAL . IGUAL NUMERO
+
+    IGUAL           shift and go to state 190
+
+
+state 183
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO . CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    CERRADO         shift and go to state 191
+
+
+state 184
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO . PUNTO_Y_COMA
+
+    PUNTO_Y_COMA    shift and go to state 192
+
+
+state 185
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA . LLAVE_CERRADA
+
+    LLAVE_CERRADA   shift and go to state 193
+
+
+state 186
+
+    (14) if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement . LLAVE_CERRADA
+
+    LLAVE_CERRADA   shift and go to state 194
+
+
+state 187
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation . PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+
+    PUNTO_Y_COMA    shift and go to state 195
+
+
+state 188
+
+    (17) pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .
+
+    DO              reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    FMT             reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    SYSTEM          reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    INT             reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    FLOAT           reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    STRING          reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    IF              reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    WHILE           reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    GATO            reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    FOR             reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    IDENTIFICADOR   reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    $end            reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+    LLAVE_CERRADA   reduce using rule 17 (pakatreice_statement -> DO arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA ENDDO WHILE ABIERTO condition CERRADO ENDWHILE .)
+
+
+state 189
+
+    (18) condition -> INT IDENTIFICADOR IGUAL . IGUAL NUMERO
+
+    IGUAL           shift and go to state 99
+
+
+state 190
+
+    (19) condition -> IDENTIFICADOR IGUAL IGUAL . NUMERO
+
+    NUMERO          shift and go to state 196
+
+
+state 191
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO . PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    PUNTO_Y_COMA    shift and go to state 197
+
+
+state 192
+
+    (16) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .
+
+    DO              reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    FMT             reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    SYSTEM          reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    INT             reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    FLOAT           reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    STRING          reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    IF              reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    WHILE           reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    GATO            reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    FOR             reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    IDENTIFICADOR   reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    $end            reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+    LLAVE_CERRADA   reduce using rule 16 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN ABIERTO CADENA MAS IDENTIFICADOR CERRADO PUNTO_Y_COMA .)
+
+
+state 193
+
+    (21) main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .
+
+    DO              reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    FMT             reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    SYSTEM          reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    INT             reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    FLOAT           reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    STRING          reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    IF              reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    WHILE           reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    GATO            reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    FOR             reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    IDENTIFICADOR   reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    $end            reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+    LLAVE_CERRADA   reduce using rule 21 (main_statement -> INT MAIN ABIERTO CERRADO LLAVE_ABIERTA line_declaration_statement for_statement RETURN NUMERO PUNTO_Y_COMA LLAVE_CERRADA .)
+
+
+state 194
+
+    (14) if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .
+
+    DO              reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    FMT             reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    SYSTEM          reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    INT             reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    FLOAT           reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    STRING          reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    IF              reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    WHILE           reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    GATO            reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    FOR             reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    IDENTIFICADOR   reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    $end            reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+    LLAVE_CERRADA   reduce using rule 14 (if_statement -> IF ABIERTO condition_statement AND NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA while_statement LLAVE_CERRADA .)
+
+
+state 195
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA . arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA
+    (32) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO POR IDENTIFICADOR
+    (33) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS IDENTIFICADOR
+    (34) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR POR NUMERO
+    (35) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS NUMERO
+    (36) arithmetic_operation -> . IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR
+    (37) arithmetic_operation -> . IDENTIFICADOR IGUAL NUMERO MAS NUMERO
+
+    IDENTIFICADOR   shift and go to state 47
+
+    arithmetic_operation           shift and go to state 198
+
+state 196
+
+    (19) condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .
+
+    CERRADO         reduce using rule 19 (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO .)
+
+
+state 197
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA . increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+    (30) increment_statement -> . IDENTIFICADOR MAS MAS
+    (31) increment_statement -> . IDENTIFICADOR MAS_IGUAL NUMERO
+
+    IDENTIFICADOR   shift and go to state 159
+
+    increment_statement            shift and go to state 199
+
+state 198
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation . PUNTO_Y_COMA LLAVE_CERRADA
+
+    PUNTO_Y_COMA    shift and go to state 200
+
+
+state 199
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement . LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    LLAVE_CERRADA   shift and go to state 201
+
+
+state 200
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA . LLAVE_CERRADA
+
+    LLAVE_CERRADA   shift and go to state 202
+
+
+state 201
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA . WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    WHILE           shift and go to state 203
+
+
+state 202
+
+    (23) for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .
+
+    DO              reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    FMT             reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    SYSTEM          reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    INT             reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    FLOAT           reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    STRING          reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    IF              reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    WHILE           reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    GATO            reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    FOR             reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    IDENTIFICADOR   reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    $end            reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    RETURN          reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+    LLAVE_CERRADA   reduce using rule 23 (for_statement -> FOR ABIERTO assignment_statement PUNTO_Y_COMA condition_statement PUNTO_Y_COMA increment_statement CERRADO LLAVE_ABIERTA arithmetic_operation PUNTO_Y_COMA arithmetic_operation PUNTO_Y_COMA LLAVE_CERRADA .)
+
+
+state 203
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE . ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 204
+
+
+state 204
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO . NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 205
+
+
+state 205
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO . MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    MAYOR           shift and go to state 206
+
+
+state 206
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR . NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 207
+
+
+state 207
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO . CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    CERRADO         shift and go to state 208
+
+
+state 208
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO . LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    LLAVE_ABIERTA   shift and go to state 209
+
+
+state 209
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA . FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    FOR             shift and go to state 210
+
+
+state 210
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR . ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 211
+
+
+state 211
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO . IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    IDENTIFICADOR   shift and go to state 212
+
+
+state 212
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR . IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    IN              shift and go to state 213
+
+
+state 213
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN . RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    RANGE           shift and go to state 214
+
+
+state 214
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE . ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    ABIERTO         shift and go to state 215
+
+
+state 215
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO . COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    COMA            shift and go to state 216
+
+
+state 216
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA . NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 217
+
+
+state 217
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO . CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    CERRADO         shift and go to state 218
+
+
+state 218
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO . CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    CERRADO         shift and go to state 219
+
+
+state 219
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO . LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    LLAVE_ABIERTA   shift and go to state 220
+
+
+state 220
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA . IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    IDENTIFICADOR   shift and go to state 221
+
+
+state 221
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR . IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    IGUAL           shift and go to state 222
+
+
+state 222
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL . NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 223
+
+
+state 223
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO . POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    POR             shift and go to state 224
+
+
+state 224
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR . NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    NUMERO          shift and go to state 225
+
+
+state 225
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO . PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA
+
+    PUNTO_Y_COMA    shift and go to state 226
+
+
+state 226
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA . LLAVE_CERRADA LLAVE_CERRADA
+
+    LLAVE_CERRADA   shift and go to state 227
+
+
+state 227
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA . LLAVE_CERRADA
+
+    LLAVE_CERRADA   shift and go to state 228
+
+
+state 228
+
+    (15) while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .
+
+    DO              reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    FMT             reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    SYSTEM          reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    INT             reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    FLOAT           reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    STRING          reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    IF              reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    WHILE           reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    GATO            reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    FOR             reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    IDENTIFICADOR   reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    $end            reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+    LLAVE_CERRADA   reduce using rule 15 (while_statement -> WHILE ABIERTO IDENTIFICADOR MAYOR NUMERO CERRADO LLAVE_ABIERTA INPUT ABIERTO NUMERO CERRADO PUNTO_Y_COMA increment_statement LLAVE_CERRADA WHILE ABIERTO NUMERO MAYOR NUMERO CERRADO LLAVE_ABIERTA FOR ABIERTO IDENTIFICADOR IN RANGE ABIERTO COMA NUMERO CERRADO CERRADO LLAVE_ABIERTA IDENTIFICADOR IGUAL NUMERO POR NUMERO PUNTO_Y_COMA LLAVE_CERRADA LLAVE_CERRADA .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for DO in state 0 resolved as shift
+WARNING: shift/reduce conflict for FMT in state 0 resolved as shift
+WARNING: shift/reduce conflict for SYSTEM in state 0 resolved as shift
+WARNING: shift/reduce conflict for INT in state 0 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 0 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 0 resolved as shift
+WARNING: shift/reduce conflict for IF in state 0 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 0 resolved as shift
+WARNING: shift/reduce conflict for GATO in state 0 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 0 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFICADOR in state 0 resolved as shift
+WARNING: shift/reduce conflict for DO in state 2 resolved as shift
+WARNING: shift/reduce conflict for FMT in state 2 resolved as shift
+WARNING: shift/reduce conflict for SYSTEM in state 2 resolved as shift
+WARNING: shift/reduce conflict for INT in state 2 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 2 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 2 resolved as shift
+WARNING: shift/reduce conflict for IF in state 2 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 2 resolved as shift
+WARNING: shift/reduce conflict for GATO in state 2 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 2 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFICADOR in state 2 resolved as shift
+WARNING: shift/reduce conflict for DO in state 149 resolved as shift
+WARNING: shift/reduce conflict for FMT in state 149 resolved as shift
+WARNING: shift/reduce conflict for SYSTEM in state 149 resolved as shift
+WARNING: shift/reduce conflict for INT in state 149 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 149 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 149 resolved as shift
+WARNING: shift/reduce conflict for IF in state 149 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 149 resolved as shift
+WARNING: shift/reduce conflict for GATO in state 149 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 149 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFICADOR in state 149 resolved as shift
+WARNING: shift/reduce conflict for LLAVE_CERRADA in state 162 resolved as shift
+WARNING: shift/reduce conflict for DO in state 162 resolved as shift
+WARNING: shift/reduce conflict for FMT in state 162 resolved as shift
+WARNING: shift/reduce conflict for SYSTEM in state 162 resolved as shift
+WARNING: shift/reduce conflict for INT in state 162 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 162 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 162 resolved as shift
+WARNING: shift/reduce conflict for IF in state 162 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 162 resolved as shift
+WARNING: shift/reduce conflict for GATO in state 162 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 162 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFICADOR in state 162 resolved as shift
+WARNING: reduce/reduce conflict in state 2 resolved using rule (program -> statement_list)
+WARNING: rejected rule (statement -> <empty>) in state 2
+WARNING: reduce/reduce conflict in state 90 resolved using rule (condition -> IDENTIFICADOR IGUAL IGUAL NUMERO)
+WARNING: rejected rule (condition_statement -> IDENTIFICADOR IGUAL IGUAL NUMERO) in state 90
+WARNING: reduce/reduce conflict in state 111 resolved using rule (assignment_statement -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR)
+WARNING: rejected rule (arithmetic_operation -> IDENTIFICADOR IGUAL IDENTIFICADOR MAS IDENTIFICADOR) in state 111
